@@ -1,0 +1,44 @@
+project:
+  name: City List
+  description: An enterprise-grade application
+  artifact: city-list
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:portaldb
+    username: sa
+    password: sa
+    driverClassName: org.h2.Driver
+  h2:
+    console:
+      enabled: true
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc:
+          batch_size: 100
+        order_inserts: true
+        order_updates: true
+  liquibase:
+    changelog: classpath:db/changelog/db.changelog-master.xml
+
+management:
+  server:
+    port: 8081
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+  info:
+    env:
+      enabled: true
+
+server:
+  servlet:
+    context-path: /portal
+  port: 9090

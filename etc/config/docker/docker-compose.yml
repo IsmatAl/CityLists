@@ -1,0 +1,17 @@
+# Docker Compose file Reference (https://docs.docker.com/compose/compose-file/)
+
+version: '3.9'
+
+# Define services
+services:
+  postgres:
+    container_name: postgres-container
+    build:
+      context: ./database
+      dockerfile: Dockerfile
+    ports:
+      - "5432:5432"
+    shm_size: 1G
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin

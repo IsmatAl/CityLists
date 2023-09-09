@@ -1,0 +1,32 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.17.xsd">
+    <changeSet id="1" author="Ismat Alakbarov">
+        <createSequence sequenceName="SEQ_CITY"/>
+        <createTable tableName="city" remarks="List of city names with image urls">
+            <column name="id" type="number(13,0)" remarks="City unique identificator">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="city_name" type="varchar(512)" remarks="City name">
+            </column>
+            <column name="image_url" type="varchar(2048)" remarks="URL of city image">
+            </column>
+            <column name="created_at" type="timestamp" remarks="Timestamp of the creation of the account">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="varchar(512)"
+                    remarks="Name of the account that triggered the creation">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_at" type="timestamp" remarks="Timestamp of the last triggered modification">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_by" type="varchar(512)"
+                    remarks="Name of the account that triggered the modification">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
